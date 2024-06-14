@@ -8,7 +8,7 @@ namespace Dynamo
 {
     public class FormatConverter
     {
-        DataTable dt = new DataTable();
+       
         public FormatConverter()
         {
             
@@ -16,11 +16,12 @@ namespace Dynamo
 
         public DataTable PopulateGrid()
         {
-        
+            DataTable dt = new DataTable();
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Excel files (*.xls*, *.xlsx)|*.xls*; *.xlsx";
             if (ofd.ShowDialog() == true)
             {
+               
                 string _sFileName = ofd.FileName;
                string _sPath = Path.GetFullPath(ofd.FileName);
                 ReadExcel(_sPath, _sFileName, dt);
@@ -40,6 +41,8 @@ namespace Dynamo
                 Worksheet workSheet = worksheetPart.Worksheet;
                 SheetData sheetData = workSheet.GetFirstChild<SheetData>();
                 IEnumerable<Row> rows = sheetData.Descendants<Row>();
+
+                dt.Clear();
 
                 foreach (Cell cell in rows.ElementAt(0))
                 {

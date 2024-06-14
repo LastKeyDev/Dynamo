@@ -5,48 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dynamo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1200">
+        Title="MainWindow" Height="750" Width="1640">
 
     <Window.Resources>
         <local:FormatConverter x:Key="FormatConverter" />
     </Window.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <TabControl Height="884" VerticalAlignment="Top">
-            <TabItem Header="Format Converter">
-                <Canvas>
-                    <Grid Height="838" Width="1200" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="37*"/>
-                            <RowDefinition Height="380*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="56*"/>
-                            <ColumnDefinition Width="45*"/>
-                            <ColumnDefinition Width="498*"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
+    <Window.Background>
+        <ImageBrush/>
+    </Window.Background>
 
-                        <Button Content="Insert" Background="#FF44B8C7" Foreground="White" Margin="7,0,25,0" Click="Button_Click" Grid.ColumnSpan="2" Height="28" VerticalAlignment="Center"/>
-                        <DataGrid x:Name="dtExcel" d:ItemsSource="{Binding}" Grid.ColumnSpan="3" Margin="7,0,506,0" Grid.Row="1"/>
-                    </Grid>
-                </Canvas>
+    <TabControl Margin="0,0,0,-1" RenderTransformOrigin="0.242,0.53">
+        <TabControl.Background>
+            <ImageBrush ImageSource="/GOseVXlbYAAJMLO.png"/>
+        </TabControl.Background>
+        <TabItem Header="Format Converter">
+            <DockPanel Height="645" >
+                <Grid RenderTransformOrigin="0.26,0.508" Width="1608" Height="610">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="41*"/>
+                        <RowDefinition Height="448*"/>
 
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="959*"/>
+                        <ColumnDefinition Width="649*"/>
+                    </Grid.ColumnDefinitions>
 
+                    <Button Content="Insert" Foreground="White" Margin="7,0,820,0" Click="Button_Click" Height="28" VerticalAlignment="Center">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                    </Button>
+                    <DataGrid x:Name="dtExcel" d:ItemsSource="{Binding}" Margin="7,15,95,0" Grid.Row="1" RenderTransformOrigin="0.5,0.5" Height="485" VerticalAlignment="Top" >
+                        <DataGrid.Background>
+                            <ImageBrush ImageSource="/XTcdwp0b_400x400.jpg"/>
+                        </DataGrid.Background>
+                        <DataGrid.Effect>
+                            <DropShadowEffect/>
+                        </DataGrid.Effect>
+                        <DataGrid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleX="0"/>
+                                <RotateTransform/>
+                                <TranslateTransform X="0"/>
+                            </TransformGroup>
+                        </DataGrid.RenderTransform>
+                    </DataGrid>
+                    <TextBox Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,14,59" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" Width="625">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/axel-kicillof-gobernador-buenos-aires.webp"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <Image HorizontalAlignment="Left" Height="65" Margin="874,200,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Grid.ColumnSpan="2" Source="/toppng.com-vs-21-324x277.png" RenderTransformOrigin="0.5,0.606">
+                        <Image.OpacityMask>
+                            <ImageBrush ImageSource="/toppng.com-vs-21-324x277.png"/>
+                        </Image.OpacityMask>
+                    </Image>
+                </Grid>
 
-            </TabItem>
-            <TabItem Header="Query Formater">
-                <DockPanel>
-                    <Grid Background="#FFE5E5E5" Width="100">
+            </DockPanel>
 
-                    </Grid>
+        </TabItem>
+        <TabItem Header="Query Formater">
+            <DockPanel>
+               
 
-                </DockPanel>
-            </TabItem>
-        </TabControl>
+            </DockPanel>
+        </TabItem>
+    </TabControl>
 
-    </Grid>
 </Window>

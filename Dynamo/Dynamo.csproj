@@ -10,8 +10,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="20240529_153413.jpg" />
+    <None Remove="axel-kicillof-gobernador-buenos-aires.webp" />
+    <None Remove="GOseVXlbYAAJMLO.png" />
+    <None Remove="KovaaK-Crosshair.png" />
+    <None Remove="toppng.com-vs-21-324x277.png" />
+    <None Remove="XTcdwp0b_400x400.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.102.2" />
     <PackageReference Include="DocumentFormat.OpenXml" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="20240529_153413.jpg" />
+    <Resource Include="axel-kicillof-gobernador-buenos-aires.webp" />
+    <Resource Include="GOseVXlbYAAJMLO.png" />
+    <Resource Include="KovaaK-Crosshair.png" />
+    <Resource Include="toppng.com-vs-21-324x277.png" />
+    <Resource Include="XTcdwp0b_400x400.jpg" />
   </ItemGroup>
 
 </Project>
