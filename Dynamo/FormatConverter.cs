@@ -1,18 +1,68 @@
 ﻿using System.Collections;
 using System.Data;
 using System.IO;
+using System.Windows.Controls;
+using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.Win32;
+using Path = System.IO.Path;
 namespace Dynamo
 {
     public class FormatConverter
     {
-       
+
+        public object valueChange;
         public FormatConverter()
         {
             
         }
+       
+        private void RemoveBlankRow(DataTable dt)
+        {
+            var rowsToRemove = new List<DataRow>();
+            foreach (DataRow row in dt.Rows)
+            {
+                bool blankrow = true;
+                foreach (var item in row.ItemArray)
+                {
+               
+                    if (!string.IsNullOrEmpty(item.ToString()))
+                    {
+                        blankrow = false;
+                        break;
+                    }
+
+                }
+                if (blankrow)
+                {
+                    rowsToRemove.Add(row);
+                }
+
+            }
+            foreach (var row in rowsToRemove)
+            {
+                dt.Rows.Remove(row);
+            }
+
+        }
+
+        private void FillBlankCell(DataTable dt)
+        {
+            
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {                
+                if (dt.Rows[i][0] == "") 
+                {
+                    dt.Rows[i][0] = valueChange;
+                }
+                else
+                {
+                    valueChange = dt.Rows[i][0];
+                }
+            }
+        }
+
 
         public DataTable PopulateGrid()
         {
@@ -23,13 +73,15 @@ namespace Dynamo
             {
                
                 string _sFileName = ofd.FileName;
-               string _sPath = Path.GetFullPath(ofd.FileName);
+                string _sPath = Path.GetFullPath(ofd.FileName);
                 ReadExcel(_sPath, _sFileName, dt);
+                RemoveBlankRow(dt);
+                FillBlankCell(dt);
             }
             return dt;
         }
 
-        public void ReadExcel(string path, string filename, DataTable dt)
+        private void ReadExcel(string path, string filename, DataTable dt)
         {
             
             using (SpreadsheetDocument doc = SpreadsheetDocument.Open(path, false))
@@ -65,7 +117,7 @@ namespace Dynamo
             dt.Rows.RemoveAt(0);
         }
 
-        public static string GetCellValue(SpreadsheetDocument document, Cell cell)
+        private static string GetCellValue(SpreadsheetDocument document, Cell cell)
         {
             SharedStringTablePart stringTablePart = document.WorkbookPart.SharedStringTablePart;
             string value = cell.CellValue == null? "" : cell.CellValue.InnerXml;
