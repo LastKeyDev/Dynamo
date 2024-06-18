@@ -14,9 +14,9 @@
         <ImageBrush/>
     </Window.Background>
 
-    <TabControl Margin="0,0,0,-1" RenderTransformOrigin="0.242,0.53">
+    <TabControl Margin="0,0,0,-1" >
         <TabControl.Background>
-            <ImageBrush ImageSource="/GOseVXlbYAAJMLO.png"/>
+            <ImageBrush ImageSource="assets/GOseVXlbYAAJMLO.png"/>
         </TabControl.Background>
         <TabItem Header="Format Converter">
             <DockPanel Height="645" >
@@ -36,9 +36,29 @@
                             <ImageBrush/>
                         </Button.Background>
                     </Button>
-                    <DataGrid x:Name="dtExcel" d:ItemsSource="{Binding}" Margin="7,15,95,0" Grid.Row="1" RenderTransformOrigin="0.5,0.5" Height="485" VerticalAlignment="Top" >
+                    <DataGrid x:Name="dtExcel" d:ItemsSource="{Binding}"  Margin="7,15,95,34" Foreground="White" Grid.Row="1" RenderTransformOrigin="0.5,0.5" CanUserAddRows="False" AreRowDetailsFrozen="True" FontFamily="Segoe UI Semibold" FontWeight="Bold" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" ColumnWidth="SizeToCells" >
+                        <DataGrid.Resources>
+                            <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="Yellow"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </Style>
+                        </DataGrid.Resources>
+
+
+                        <DataGrid.CellStyle>
+                            <Style>
+                                <Setter Property="TextBlock.FontFamily" Value="Verdana"></Setter>
+                                <Setter Property="TextBlock.TextAlignment" Value="Left"></Setter>
+                                <Setter Property="TextBlock.TextWrapping" Value="Wrap"></Setter>
+
+                            </Style>
+
+                        </DataGrid.CellStyle>
+                        <DataGrid.RowBackground>
+                            <ImageBrush/>
+                        </DataGrid.RowBackground>
                         <DataGrid.Background>
-                            <ImageBrush ImageSource="/XTcdwp0b_400x400.jpg"/>
+                            <ImageBrush ImageSource="assets/XTcdwp0b_400x400.jpg"/>
                         </DataGrid.Background>
                         <DataGrid.Effect>
                             <DropShadowEffect/>
@@ -52,16 +72,16 @@
                             </TransformGroup>
                         </DataGrid.RenderTransform>
                     </DataGrid>
-                    <TextBox Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,14,59" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" Width="625">
+                    <TextBox Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,14,34" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" Width="625">
                         <TextBox.Background>
-                            <ImageBrush ImageSource="/axel-kicillof-gobernador-buenos-aires.webp"/>
+                            <ImageBrush ImageSource="assets/axel-kicillof-gobernador-buenos-aires.webp"/>
                         </TextBox.Background>
                     </TextBox>
-                    <Image HorizontalAlignment="Left" Height="65" Margin="874,200,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Grid.ColumnSpan="2" Source="/toppng.com-vs-21-324x277.png" RenderTransformOrigin="0.5,0.606">
-                        <Image.OpacityMask>
-                            <ImageBrush ImageSource="/toppng.com-vs-21-324x277.png"/>
-                        </Image.OpacityMask>
-                    </Image>
+                    <Button x:Name="convertFight" Content="" HorizontalAlignment="Left" Margin="869,190,0,0" Grid.Row="1" VerticalAlignment="Top" Height="70" Width="80" Click="convertFight_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="assets/toppng.com-vs-21-324x277.png"/>
+                        </Button.Background>
+                    </Button>
                 </Grid>
 
             </DockPanel>
@@ -69,7 +89,7 @@
         </TabItem>
         <TabItem Header="Query Formater">
             <DockPanel>
-               
+
 
             </DockPanel>
         </TabItem>
