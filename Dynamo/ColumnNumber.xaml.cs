@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,7 +13,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.IO;
+using DocumentFormat.OpenXml.Spreadsheet;
+using NPOI.HPSF;
 
 namespace Dynamo
 {
@@ -54,7 +58,22 @@ namespace Dynamo
 
                 if (MessageBox.Show("Fue advertido... Jugó con las fuerzas del cielo, le caerá todo el poder", "Fuerzas del cielo incomming", MessageBoxButton.OK, MessageBoxImage.Warning, (MessageBoxResult)MessageBoxButton.OK, MessageBoxOptions.DefaultDesktopOnly) == MessageBoxResult.OK)
                 {
+                    if(MessageBox.Show("Un consejo", "Fuerzas del cielo incomming", MessageBoxButton.OK, MessageBoxImage.None, (MessageBoxResult)MessageBoxButton.OK, MessageBoxOptions.DefaultDesktopOnly) == MessageBoxResult.OK)
+                    {
+                        if (MessageBox.Show("Baje el volumen", "Fuerzas del cielo incomming", MessageBoxButton.OK, MessageBoxImage.None, (MessageBoxResult)MessageBoxButton.OK, MessageBoxOptions.DefaultDesktopOnly) == MessageBoxResult.OK)
+                        {
+                            string fileName = "Zurdos-hijos-de-puta-tiemblen-viva-la-liberta.wav";
+                            string path = Path.GetFullPath(fileName);
 
+                            SoundPlayer player = new SoundPlayer();
+                            player.Stream = Properties.Resources.Zurdos_hijos_de_puta_tiemblen_viva_la_liberta;
+                            player.Play();
+
+                            
+                          
+                            
+                        }
+                    }
                 }
 
             }
