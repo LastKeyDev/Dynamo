@@ -1,13 +1,5 @@
-﻿using System.Text;
+﻿using System.Data;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 
 namespace Dynamo
@@ -18,6 +10,8 @@ namespace Dynamo
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DataTable dt = new DataTable();
+        private int column;
         public FormatConverter converter = new FormatConverter();
         public MainWindow()
         {
@@ -25,13 +19,27 @@ namespace Dynamo
         }
 
      
- 
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            dtExcel.ItemsSource = converter.PopulateGrid().DefaultView;
+            dt = converter.PopulateGrid();
+            dtExcel.ItemsSource = dt.DefaultView;
+
+            
         }
 
-     
+        private void convertFight_Click(object sender, RoutedEventArgs e)
+        {
+            converter.JsonConverter(dt, column);
+        }
+
+        private void openColumn(object sender, RoutedEventArgs e)
+        {
+            ColumnNumber columnNumber = new ColumnNumber();
+
+            if (columnNumber.ShowDialog() == false)
+            {
+                column = columnNumber.ColumnNum;
+            };
+        }
     }
 }

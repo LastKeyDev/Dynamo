@@ -11,15 +11,29 @@
 
   <ItemGroup>
     <None Remove="20240529_153413.jpg" />
+    <None Remove="assets\20240529_153413.jpg" />
+    <None Remove="assets\axel-kicillof-gobernador-buenos-aires.webp" />
+    <None Remove="assets\back.png" />
+    <None Remove="assets\toppng.com-vs-21-324x277.png" />
+    <None Remove="assets\XTcdwp0b_400x400.jpg" />
     <None Remove="axel-kicillof-gobernador-buenos-aires.webp" />
     <None Remove="GOseVXlbYAAJMLO.png" />
     <None Remove="KovaaK-Crosshair.png" />
-    <None Remove="toppng.com-vs-21-324x277.png" />
     <None Remove="XTcdwp0b_400x400.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="DocumentFormat.OpenXml" Version="3.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="NPOI" Version="2.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\20240529_153413.jpg" />
+    <Resource Include="assets\axel-kicillof-gobernador-buenos-aires.webp" />
+    <Resource Include="assets\back.png" />
+    <Resource Include="assets\toppng.com-vs-21-324x277.png" />
+    <Resource Include="assets\XTcdwp0b_400x400.jpg" />
   </ItemGroup>
 
 </Project>

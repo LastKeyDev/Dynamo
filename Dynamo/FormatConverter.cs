@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Data;
 using System.IO;
+using System.Text.Json.Nodes;
+using System.Windows;
 using System.Windows.Controls;
 using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.Win32;
 using Path = System.IO.Path;
 namespace Dynamo
@@ -133,5 +136,39 @@ namespace Dynamo
         }
 
 
+        public string JsonConverter(DataTable dt, int h)
+        {
+            List<dynamic> cell = new List<dynamic>();
+
+            for (int col = 0; dt.Columns.Count > h; col++)
+            {
+                cell.Add(dt.Columns[col].ColumnName);
+            }
+            int i = 0;
+            foreach (DataRow row in dt.Rows) 
+            {
+                
+                object reason  = new 
+                {
+                    id = i++,
+                    sector = row[0].ToString(),
+                    description = row[1].ToString().Contains("(A)") ? row[1].ToString()?.Replace("(A)", "") : row[1].ToString(),
+                    auto = row[1].ToString().Contains("(A)") ? true : false,
+                    notify = row[2]
+
+
+                };
+
+                cell.Add(reason);
+            }
+
+            return "";
+     
+        }
+
+        private class Motivos
+        {
+            
+        }
     }
 }

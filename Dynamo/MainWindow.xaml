@@ -15,12 +15,10 @@
     </Window.Background>
 
     <TabControl Margin="0,0,0,-1" >
-        <TabControl.Background>
-            <ImageBrush ImageSource="assets/GOseVXlbYAAJMLO.png"/>
-        </TabControl.Background>
+
         <TabItem Header="Format Converter">
-            <DockPanel Height="645" >
-                <Grid RenderTransformOrigin="0.26,0.508" Width="1608" Height="610">
+            <DockPanel Height="668" >
+                <Grid RenderTransformOrigin="0.26,0.508" Width="1608" Height="626">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="41*"/>
                         <RowDefinition Height="448*"/>
@@ -31,7 +29,7 @@
                         <ColumnDefinition Width="649*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Content="Insert" Foreground="White" Margin="7,0,820,0" Click="Button_Click" Height="28" VerticalAlignment="Center">
+                    <Button Content="Insert" Foreground="Black" Margin="7,0,820,0" Click="Button_Click" Height="28" VerticalAlignment="Center">
                         <Button.Background>
                             <ImageBrush/>
                         </Button.Background>
@@ -72,15 +70,24 @@
                             </TransformGroup>
                         </DataGrid.RenderTransform>
                     </DataGrid>
-                    <TextBox Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,14,34" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" Width="625">
+                    <TextBox x:Name="txtJson" Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,14,34" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" Width="625">
                         <TextBox.Background>
                             <ImageBrush ImageSource="assets/axel-kicillof-gobernador-buenos-aires.webp"/>
                         </TextBox.Background>
                     </TextBox>
-                    <Button x:Name="convertFight" Content="" HorizontalAlignment="Left" Margin="869,190,0,0" Grid.Row="1" VerticalAlignment="Top" Height="70" Width="80" Click="convertFight_Click">
+                    <Button x:Name="convertFight" Content="" HorizontalAlignment="Left" Margin="874,197,0,0" Grid.Row="1" VerticalAlignment="Top" Height="70" Width="80" Click="convertFight_Click">
+                        <Button.OpacityMask>
+                            <ImageBrush ImageSource="/assets/toppng.com-vs-21-324x277.png"/>
+                        </Button.OpacityMask>
+                        <Button.BorderBrush>
+                            <ImageBrush ImageSource="/assets/toppng.com-vs-21-324x277.png"/>
+                        </Button.BorderBrush>
                         <Button.Background>
-                            <ImageBrush ImageSource="assets/toppng.com-vs-21-324x277.png"/>
+                            <ImageBrush ImageSource="/assets/toppng.com-vs-21-324x277.png"/>
                         </Button.Background>
+                    </Button>
+                    <Button x:Name="setNumColumn"  HorizontalAlignment="Left" Margin="869,137,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40" Click="openColumn" Width="85">
+                        <TextBlock Text="Cantidad de columnas" TextWrapping="Wrap" TextAlignment="Center" Width="67" Height="43"/>
                     </Button>
                 </Grid>
 
