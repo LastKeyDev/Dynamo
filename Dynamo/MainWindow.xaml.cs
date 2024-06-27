@@ -29,7 +29,15 @@ namespace Dynamo
 
         private void convertFight_Click(object sender, RoutedEventArgs e)
         {
-            converter.JsonConverter(dt, column);
+            if ((column == 0 || column == null) || dtExcel == null) {
+                MessageBox.Show("Necesita cargar un excel o una columna");
+            }
+            else 
+            {
+               txtJson.Text =  converter.JsonConverter(dt, column);
+
+            };
+
         }
 
         private void openColumn(object sender, RoutedEventArgs e)

@@ -9,6 +9,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 using Path = System.IO.Path;
 namespace Dynamo
 {
@@ -140,35 +141,34 @@ namespace Dynamo
         {
             List<dynamic> cell = new List<dynamic>();
 
-            for (int col = 0; dt.Columns.Count > h; col++)
+            for (int col = 0; col >= h; col++)
             {
                 cell.Add(dt.Columns[col].ColumnName);
             }
             int i = 0;
             foreach (DataRow row in dt.Rows) 
             {
-                
-                object reason  = new 
+
+                object reason = new
                 {
                     id = i++,
                     sector = row[0].ToString(),
                     description = row[1].ToString().Contains("(A)") ? row[1].ToString()?.Replace("(A)", "") : row[1].ToString(),
                     auto = row[1].ToString().Contains("(A)") ? true : false,
-                    notify = row[2]
+                    notify = row[3].ToString().ToLower().Trim().Equals("si") ? 3 : row[3].ToString().ToLower().Trim().Equals("no") ? 0 : row[3].ToString().ToLower().Trim().Contains("si (fin del") ? 2 : 3
 
 
-                };
+            };
+                var j = row[3].ToString().ToLower().Trim().Equals("si") ? 3 : row[3].ToString().ToLower().Trim().Equals("no") ? 0 : row[3].ToString().ToLower().Trim().Contains("si (fin del ") ? 2 : 3;
 
                 cell.Add(reason);
             }
+            var parse = JsonConvert.SerializeObject(cell, Formatting.Indented);
 
-            return "";
+            return parse;
      
         }
 
-        private class Motivos
-        {
-            
-        }
+  
     }
 }
