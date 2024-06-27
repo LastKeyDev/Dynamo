@@ -70,7 +70,7 @@
                             </TransformGroup>
                         </DataGrid.RenderTransform>
                     </DataGrid>
-                    <TextBox x:Name="txtJson" Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,14,34" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" Width="625">
+                    <TextBox x:Name="txtJson" Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,14,34" Grid.Row="1" TextWrapping="Wrap" Width="625">
                         <TextBox.Background>
                             <ImageBrush ImageSource="assets/axel-kicillof-gobernador-buenos-aires.webp"/>
                         </TextBox.Background>
@@ -89,7 +89,10 @@
                     <Button x:Name="setNumColumn"  HorizontalAlignment="Left" Margin="869,137,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40" Click="openColumn" Width="85">
                         <TextBlock Text="Cantidad de columnas" TextWrapping="Wrap" TextAlignment="Center" Width="67" Height="43"/>
                     </Button>
+                    <Button Content="Save as Json"  Margin="869,0,0,0" Click="Button_Click_1"/>
                 </Grid>
+         
+
 
             </DockPanel>
 

@@ -1,5 +1,8 @@
 ﻿using System.Data;
+using System.IO;
 using System.Windows;
+using DocumentFormat.OpenXml.Drawing.Diagrams;
+using Microsoft.Win32;
 
 
 namespace Dynamo
@@ -49,5 +52,43 @@ namespace Dynamo
                 column = columnNumber.ColumnNum;
             };
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtJson.Text))
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Archivos JSON (*.json)|*.json|Todos los archivos (*.*)|*.*";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    try
+                    {
+                        // Obtener la ruta del archivo seleccionado
+                        string filePath = saveFileDialog.FileName;
+
+                        // Generar el contenido del archivo
+                        string fileContent = txtJson.Text;
+
+                        // Escribir el contenido en el archivo
+                        File.WriteAllText(filePath, fileContent);
+
+                        Console.WriteLine("Archivo guardado exitosamente.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error al guardar el archivo: {ex.Message}");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Primero se debe generar un JSON", "", MessageBoxButton.OK);
+            }
+        }
+        
+
+
     }
 }

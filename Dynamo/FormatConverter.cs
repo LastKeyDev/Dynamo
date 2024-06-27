@@ -149,6 +149,7 @@ namespace Dynamo
             foreach (DataRow row in dt.Rows) 
             {
 
+                if (row[1].ToString().ToLower().Trim() == "otros" || row[1].ToString().ToLower().Trim() == "otros") { continue; }
                 object reason = new
                 {
                     id = i++,
@@ -156,12 +157,11 @@ namespace Dynamo
                     description = row[1].ToString().Contains("(A)") ? row[1].ToString()?.Replace("(A)", "") : row[1].ToString(),
                     auto = row[1].ToString().Contains("(A)") ? true : false,
                     notify = row[3].ToString().ToLower().Trim().Equals("si") ? 3 : row[3].ToString().ToLower().Trim().Equals("no") ? 0 : row[3].ToString().ToLower().Trim().Contains("si (fin del") ? 2 : 3
-
-
-            };
-                var j = row[3].ToString().ToLower().Trim().Equals("si") ? 3 : row[3].ToString().ToLower().Trim().Equals("no") ? 0 : row[3].ToString().ToLower().Trim().Contains("si (fin del ") ? 2 : 3;
+                };
 
                 cell.Add(reason);
+                
+
             }
             var parse = JsonConvert.SerializeObject(cell, Formatting.Indented);
 
